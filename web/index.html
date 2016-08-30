@@ -1,0 +1,43 @@
+<!--
+  ~ Copyright (c) 2016. Christopher Freestone
+  ~
+  ~ This file is part of deadfad.
+  ~
+  ~ deadfad is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ deadfad is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with deadfad.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<html>
+<head>
+    <title>Angular 2 QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/main.less">
+    <!-- libs -->
+    <!-- Polyfill(s) for older browsers -->
+    <!--<script src="node_modules/core-js/client/shim.min.js"></script>-->
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <!-- Bootstrap --->
+    <script>
+        System.import('app').catch(function(err) {
+            console.error(err);
+        });
+    </script>
+</head>
+<body>
+<deadfad-app>Loading...</deadfad-app>
+</body>
+</html>

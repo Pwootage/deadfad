@@ -1,0 +1,19 @@
+{
+  "name": "deadfad",
+  "version": "1.0.0",
+  "description": "A hex editor/data parsing app",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Pwootage/deadfad.git"
+  },
+  "author": "Pwootage <pwootage@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Pwootage/deadfad/issues"
+  },
+  "homepage": "https://github.com/Pwootage/deadfad#readme",
+  "dependencies": {
+    "typescript": "^1.8.10"
+  }
+}
