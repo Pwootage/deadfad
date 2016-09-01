@@ -4,3 +4,4 @@
 node_modules
 .idea
 /web/style/**/*.css
+bower_components

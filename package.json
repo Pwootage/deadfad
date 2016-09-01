@@ -12,8 +12,5 @@
   "bugs": {
     "url": "https://github.com/Pwootage/deadfad/issues"
   },
-  "homepage": "https://github.com/Pwootage/deadfad#readme",
-  "dependencies": {
-    "typescript": "^1.8.10"
-  }
+  "homepage": "https://github.com/Pwootage/deadfad#readme"
 }

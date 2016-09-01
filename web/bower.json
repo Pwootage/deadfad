@@ -1,0 +1,14 @@
+{
+  "name": "deadfad",
+  "description": "A hex editor/data parsing app",
+  "main": "",
+  "authors": [
+    "Pwootage <pwootage@gmail.com>"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/Pwootage/deadfad",
+  "private": true,
+  "dependencies": {
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7"
+  }
+}

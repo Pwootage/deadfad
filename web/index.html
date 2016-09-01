@@ -19,23 +19,53 @@
 
 <html>
 <head>
-    <title>Angular 2 QuickStart</title>
+    <title>deadfad</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style/main.less">
-    <!-- libs -->
-    <!-- Polyfill(s) for older browsers -->
-    <!--<script src="node_modules/core-js/client/shim.min.js"></script>-->
+    <!-- Polyfills -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <!-- Libs -->
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="systemjs.config.js"></script>
     <!-- Bootstrap --->
     <script>
-        System.import('app').catch(function(err) {
-            console.error(err);
+        document.addEventListener('WebComponentsReady', () => {
+            System.import('app').catch((err) => {
+                console.error(err);
+            });
         });
     </script>
+
+    <!-- Polymer Styles -->
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html" />
+    <link rel="import" href="bower_components/paper-styles/color.html" />
+    <link rel="import" href="bower_components/paper-styles/default-theme.html" />
+    <link rel="import" href="bower_components/paper-styles/typography.html" />
+    <link rel="import" href="bower_components/paper-styles/shadow.html" />
+    <style is="custom-style">
+        :root {
+            --primary-text-color: var(--dark-theme-text-color);
+            --primary-background-color: var(--dark-theme-background-color);
+            --secondary-text-color: var(--dark-theme-secondary-color);
+            --disabled-text-color: var(--dark-theme-disabled-color);
+            --divider-color: var(--dark-theme-divider-color);
+        }
+        body {
+            @apply(--layout-fullbleed);
+            @apply(--paper-font-body1);
+            background: var(--primary-background-color);
+            color: var(--primary-text-color);
+        }
+    </style>
+    <!-- Polymer Elements -->
+    <link rel="import" href="font-awesome-polymer-icons/fa-all.html" />
+    <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html" />
+    <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html" />
+    <link rel="import" href="bower_components/paper-button/paper-button.html" />
 </head>
 <body>
 <deadfad-app>Loading...</deadfad-app>
