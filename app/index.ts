@@ -1,9 +1,11 @@
 import * as Electron from 'electron';
+const {BrowserWindow, app}  = Electron;
+import {setupMenu} from './menu/menu';
 
 let mainWindow: Electron.BrowserWindow;
 
 function initMainWindow() {
-  mainWindow = new Electron.BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600
   });
@@ -19,10 +21,11 @@ function initMainWindow() {
   console.log('Set up main window - we\'re ready to roll');
 }
 
-Electron.app.on('ready', () => {
+app.on('ready', () => {
   initMainWindow();
+  setupMenu();
 });
 
-Electron.app.on('window-all-closed', () => {
-  Electron.app.quit();
+app.on('window-all-closed', () => {
+  app.quit();
 });

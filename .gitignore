@@ -1,5 +1,5 @@
 /web/app/**/*.js
-/app/*.js
+/app/**/*.js
 *.js.map
 node_modules
 .idea
