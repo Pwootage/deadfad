@@ -1,0 +1,6 @@
+
+export class IPCHandler {
+  constructor() {
+
+  }
+}
