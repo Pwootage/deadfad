@@ -1,6 +1,10 @@
 import * as Electron from 'electron';
 const {BrowserWindow, app}  = Electron;
+
 import {setupMenu} from './menu/menu';
+
+import {openFile} from './actions/open';
+import {saveAll} from "./actions/save";
 
 let mainWindow: Electron.BrowserWindow;
 
@@ -23,7 +27,7 @@ function initMainWindow() {
 
 app.on('ready', () => {
   initMainWindow();
-  setupMenu();
+  setupMenu(() => openFile(), () => saveAll());
 });
 
 app.on('window-all-closed', () => {
