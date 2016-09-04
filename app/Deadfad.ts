@@ -1,5 +1,5 @@
 import * as Electron from 'electron';
-const {app} = Electron;
+const {app, dialog} = Electron;
 
 import {DeadfadWindow} from './DeadfadWindow';
 import {setupMenu} from './menu/menu';
@@ -42,6 +42,15 @@ export class Deadfad {
 
   openFile() {
     console.log("Showing open dialog");
+    dialog.showOpenDialog({
+      // title: 'Open File',
+      properties: ['openFile'],
+      filters: [
+        {name: 'All Files', extensions: ['*']}
+      ]
+    }, (file) => {
+      console.log(`Opening '${file}'`)
+    });
   }
 
   saveAll() {

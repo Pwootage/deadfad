@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/c4309e0e646ec024537c0806c6a31d199aa68df6/big-integer/big-integer.d.ts",
+    "raw": "registry:dt/big-integer#0.0.0+20160319061115",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/c4309e0e646ec024537c0806c6a31d199aa68df6/big-integer/big-integer.d.ts"
+  }
+}

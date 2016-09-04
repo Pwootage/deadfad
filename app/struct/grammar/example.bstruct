@@ -1,0 +1,22 @@
+big endian struct Example1 {
+  int32 anInt;
+  float positionedFloat 0x16;
+  float[3] position 32;
+}
+
+little endian struct Test1 {
+  float[6] bb;
+}
+
+struct Test2 extends Test1 {
+
+}
+
+struct Cat {
+}
+
+struct Dog {
+}
+
+struct CatDog extends Cat, Dog {
+}

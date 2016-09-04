@@ -5,3 +5,6 @@ node_modules
 .idea
 /web/style/**/*.css
 bower_components
+
+# Includes
+!/app/struct/grammar/bstruct.js
