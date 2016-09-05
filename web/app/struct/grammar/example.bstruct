@@ -20,3 +20,7 @@ struct Dog {
 
 struct CatDog extends Cat, Dog {
 }
+
+struct underscore_name {
+
+}

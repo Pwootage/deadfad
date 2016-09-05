@@ -7,4 +7,4 @@ node_modules
 bower_components
 
 # Includes
-!/app/struct/grammar/bstruct.js
+!/web/app/struct/grammar/bstruct.js

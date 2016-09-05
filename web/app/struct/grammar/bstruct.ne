@@ -42,7 +42,7 @@ TYPE -> NAME {% id0 %}
      |  NAME "[" NUMBER "]" {% d => ({array: true, type: d[0], length: d[2]}) %}
 
 # Strings
-NAME -> [a-zA-Z0-9]:+ {% idjoin %}
+NAME -> [a-zA-Z0-9_]:+ {% idjoin %}
 
 # Number
 NUMBER -> "0x" HEX_NUMBER {% d => '0x' + d[1] %}

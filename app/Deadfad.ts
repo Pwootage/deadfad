@@ -3,13 +3,13 @@ const {app, dialog} = Electron;
 
 import {DeadfadWindow} from './DeadfadWindow';
 import {setupMenu} from './menu/menu';
-
-import {IPCHandler} from './ipc/Handler'
+import {setupGlobalIPC, IPCHandler} from './ipc/Handler'
 
 export class Deadfad {
   windows: DeadfadWindow[] = [];
 
   constructor() {
+    setupGlobalIPC(this);
     app.on('ready', () => {
       setupMenu(() => this.openFile(), () => this.saveAll());
     });
@@ -19,7 +19,7 @@ export class Deadfad {
     });
   }
 
-  createWindow() {
+  createWindow(): DeadfadWindow {
     let window = new DeadfadWindow(this, {
       width: 800,
       height: 600
@@ -31,13 +31,14 @@ export class Deadfad {
     // window.webContents.openDevTools({mode: "undocked"});
 
     window.on('closed', () => {
-      window.deadfad = null; //Break reference cycle
       let after = this.windows.filter(a => a != window);
       console.log(`Closed a window ${this.windows.length} -> ${after.length}`);
       this.windows = after;
     });
 
     console.log('Set up a window');
+
+    return window;
   }
 
   openFile() {

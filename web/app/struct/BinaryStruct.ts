@@ -1,6 +1,15 @@
 import {BinaryBuffer} from "./BinaryBuffer";
 import * as bigInt from 'big-integer';
-import {endianness} from "os";
+import {bstruct} from './bstruct';
+
+const grammar = require('./grammar/bstruct.js');
+const nearley = require('nearley');
+
+export function parseBStructFromString(str: string): [bstruct.root_statement] {
+  const parser = new nearley.Parser(grammar.ParserRules, grammar.ParserStart);
+  parser.feed(str);
+  return parser.results;
+}
 
 export enum BEndianess {
   BIG, LITTLE
@@ -18,7 +27,7 @@ export abstract class BinaryObject<T> {
     return this._name;
   }
 
-  abstract read(buff: BinaryBuffer, offset: number);
+  abstract read(buff: BinaryBuffer, offset: number): void;
 
   abstract size(): number;
 }
