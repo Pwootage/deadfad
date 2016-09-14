@@ -1,3 +1,5 @@
+big endian;
+
 big endian struct Example1 {
   int32 anInt;
   float positionedFloat 0x16;

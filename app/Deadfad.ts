@@ -1,5 +1,7 @@
 import * as Electron from 'electron';
 const {app, dialog} = Electron;
+import {resolve} from 'path';
+import {readFileSync} from 'fs';
 
 import {DeadfadWindow} from './DeadfadWindow';
 import {setupMenu} from './menu/menu';

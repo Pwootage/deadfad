@@ -1,6 +1,9 @@
 export namespace bstruct {
   export interface root_statement {
+    /** parse-time-added type to force file parse state reset between files */
+    reset?: boolean;
     struct?: struct_def;
+    endian?: 'big' | 'little';
   }
 
   //noinspection ReservedWordAsName

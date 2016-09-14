@@ -1,0 +1,22 @@
+<style>
+    paper-scroll-header-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+<paper-scroll-header-panel fixed>
+    <paper-toolbar>
+        <paper-icon-button icon="fa:bars" (click)="menuTap()"></paper-icon-button>
+        <paper-button routerLink="/">HEX</paper-button>
+        <paper-button routerLink="/struct">Struct</paper-button>
+        <div class="title"></div>
+        <paper-icon-button icon="fa:refresh" (click)="reload()"></paper-icon-button>
+        <paper-icon-button icon="fa:ellipsis-v" (click)="moreTap()"></paper-icon-button>
+    </paper-toolbar>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</paper-scroll-header-panel>

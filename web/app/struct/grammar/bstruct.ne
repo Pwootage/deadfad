@@ -22,7 +22,9 @@
 main -> _:? (ROOT_STATEMENT _:? {% id0 %}):+ {% id1 %}
 
 # Root
-ROOT_STATEMENT -> STRUCT_DECL {% d => ({'struct': d[0]}) %}
+ROOT_STATEMENT -> STRUCT_DECL {% d => ({struct: d[0]}) %}
+               |  ENDIAN_DECL ";" {% d => ({endian: d[0] }) %}
+
 # Struct
 STRUCT_DECL -> (ENDIAN_DECL _ {% id0 %}):? "struct" _ NAME _ (EXTENDS_DECL _ {% id0 %}):? "{" STRUCT_BODY "}" {% d => ({ name: d[3], endian: d[0], extends: d[5], fields: d[7] }) %}
 

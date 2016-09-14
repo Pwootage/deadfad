@@ -5,14 +5,61 @@ import {bstruct} from './bstruct';
 const grammar = require('./grammar/bstruct.js');
 const nearley = require('nearley');
 
-export function parseBStructFromString(str: string): [bstruct.root_statement] {
-  const parser = new nearley.Parser(grammar.ParserRules, grammar.ParserStart);
-  parser.feed(str);
-  return parser.results;
+class FileParseState {
+  defaultEndian = BEndianess.BIG;
+}
+
+export function parseBStructStrings(sources: string[]): Map<string, BStruct> {
+  let parsedStatements: bstruct.root_statement[] = sources.map(src => {
+    const parser = new nearley.Parser(grammar.ParserRules, grammar.ParserStart);
+    parser.feed(src);
+    let res = parser.results[0];
+    res.push({ reset: true}); //reset state between files
+    return res;
+  }).reduce((a, b) => a.concat(b), []);
+
+  let fileParseState = new FileParseState();
+  let structs = new Map<string, BStruct>();
+
+  for (let i = 0; i < parsedStatements.length; i++) {
+    let statement = parsedStatements[i];
+    if (statement.reset) {
+      fileParseState = new FileParseState();
+    } else if (statement.endian) {
+      fileParseState.defaultEndian = endiannessFromString(statement.endian);
+    } else if (statement.struct) {
+      let bstruct = structs.get(statement.struct.name);
+      if (!bstruct) {
+        bstruct = new BStruct(statement.struct.name);
+        structs.set(bstruct.name, bstruct);
+      }
+      bstruct.endian = endiannessFromString(statement.struct.endian, fileParseState.defaultEndian);
+      bstruct.addFields(statement.struct.fields);
+      statement.struct.extends.forEach(extendsStruct => {
+        let supers = parsedStatements.filter(v => v.struct && v.struct.name === extendsStruct);
+        if (supers.length == 0) {
+          throw new Error(`Failed to find struct named ${extendsStruct} to extend!`);
+        } else {
+          supers.forEach(v => bstruct.addFields(v.struct.fields));
+        }
+      })
+    }
+  }
+  return structs;
 }
 
 export enum BEndianess {
   BIG, LITTLE
+}
+
+export function endiannessFromString(literal?: 'little' | 'big', defaultEndianness: BEndianess = BEndianess.BIG): BEndianess {
+  if (literal === 'big') {
+    return BEndianess.BIG;
+  } else if (literal === 'little') {
+    return BEndianess.LITTLE;
+  } else {
+    return defaultEndianness;
+  }
 }
 
 export abstract class BinaryObject<T> {
@@ -49,6 +96,12 @@ export class BStruct extends BinaryObject<BStruct> {
   size(): number {
     return this.fields.map(f => f.offset + f.size())
       .reduce((a, b) => Math.max(a, b), 0);
+  }
+
+  addFields(fields: bstruct.field_def[]) {
+    fields.forEach(field => {
+      field.
+    })
   }
 }
 

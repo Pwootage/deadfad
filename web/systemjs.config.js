@@ -6,6 +6,15 @@
     'rxjs': 'node_modules/rxjs',
     '@vaadin': 'node_modules/@vaadin'
   };
+
+  // Node modules
+  [
+    'electron',
+    'fs',
+    'big-integer',
+    'nearley',
+  ].forEach(nodeModule => map[nodeModule] = `@node/${nodeModule}`);
+
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app': {main: 'main.js', defaultExtension: 'js'},

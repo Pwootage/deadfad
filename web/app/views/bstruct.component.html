@@ -1,0 +1,14 @@
+<style is="custom-style">
+    paper-button.load {
+        background: var(--primary-color);
+    }
+</style>
+<paper-header-panel waterfall>
+    <paper-toolbar justify="right">
+        <paper-button class="load" raised (click)="loadBStructs()">Load</paper-button>
+    </paper-toolbar>
+    <ul>
+        <li style="height: 200px;" *ngFor="let item of [1,2,3,4,5,6,7]">structs go here</li>
+    </ul>
+</paper-header-panel>
+
